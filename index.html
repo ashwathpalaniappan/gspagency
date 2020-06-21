@@ -530,7 +530,7 @@
                     </div>
 
                 </div>
-            </article>	
+            </article>
 
 
  <article class="card">
@@ -549,7 +549,7 @@
                     </div>
 
                 </div>
-            </article>	
+            </article>
 
 
  <article class="card">
@@ -568,7 +568,7 @@
                     </div>
 
                 </div>
-            </article>	
+            </article>
 
  <article class="card">
                 <div class="card__img">
@@ -586,7 +586,7 @@
                     </div>
 
                 </div>
-            </article>	
+            </article>
 
 <article class="card">
                 <div class="card__img">
@@ -625,7 +625,7 @@
             </article>
 
 </main>
- 
+
    </section>
 
     <br><br><br>
@@ -654,7 +654,7 @@
                     </div>
 
                 </div>
-            </article>	
+            </article>
 
 
  <article class="card">
@@ -673,7 +673,7 @@
                     </div>
 
                 </div>
-            </article>	
+            </article>
 
 
  <article class="card">
@@ -692,7 +692,7 @@
                     </div>
 
                 </div>
-            </article>	
+            </article>
 
  <article class="card">
                 <div class="card__img">
@@ -710,7 +710,7 @@
                     </div>
 
                 </div>
-            </article>	
+            </article>
 
 <article class="card">
                 <div class="card__img">
@@ -749,7 +749,7 @@
             </article>
 
 </main>
- 
+
    </section>
 
     <br><br><br>
@@ -1017,7 +1017,7 @@
 
                 </div>
             </article>
-  
+
 </main>
 </section>
 
@@ -1285,11 +1285,11 @@
 
                 </div>
             </article>
-  
+
 </main>
 
 </section>
-    
+
     <section id="Dairy Day">
         <br><br>
     <h1 style="color: #19835C;">Dairy Day</h1>
@@ -1300,7 +1300,7 @@
                     <img src="assets/img/DD vanilla cup.png" alt="">
                 </div>
                 <div class="card__precis">
-                    <div> 
+                    <div>
                         <span class="card__preci card__preci--now">Vanilla cup box / unit</span>
                         <span class="card__preci card__preci--before">Rs.144 / 6</span>
                         <center>
@@ -1554,7 +1554,7 @@
 
                 </div>
             </article>
-  
+
 </main>
 </section>
 
@@ -1823,10 +1823,10 @@
 
                 </div>
             </article>
-  
+
 </main>
 </section>
-    
+
 <br><br><br><br>
 
 <section id="bev company1">
@@ -2165,6 +2165,7 @@
 <br><br>
 <h1 id="cart_items" style="color: #19835C;">Cart Items</h1>
     <br>
+        <div id="thala" style="display: none;"></div>
     <div id="output">
     <table id="table">
   <tr>
@@ -2195,9 +2196,17 @@
 <p id="result"  style="display: none;"></p><br>
 <p id="result_tot" style="display: none;"></p>
         <p id="alert" class="alrt"></p>
-    <br><button type="button" onclick="back()" id="b1" class="buy" style="background: #1c2e4a;"> Back to Shop </button> &nbsp;
-        <button type="button" onclick="clear2()" id="b2" class="clear"> Clear Table </button> &nbsp;&nbsp;
+
+    <div id="a1">
+<button type="button" onclick="back()" id="b1" class="buy" style="background: #1c2e4a;"> Back to Shop </button> &nbsp;
+<button type="button" onclick="clear2()" id="b2" class="clear"> Clear Table </button> &nbsp;&nbsp;
 <button type="button" onclick="check()" id="b3" class="buy"> Buy Now </button>
+    </div>
+
+        <div id="a2" style="display: none;">
+     <button type="button" onclick="back()" id="b1" class="buy" style="background: #1c2e4a;"> Back to Shop </button> &nbsp;
+     <button type="button" onclick="writeData1()" id="b4" class="buy"> Proceed </button>
+        </div>
 <br><br><br>
     </center>
 </section>
@@ -2239,7 +2248,7 @@
 				<div class="input-div pass">
            		   <div class="div">
 
-           		    	<input type="text" placeholder="Address Line 3" class="input2" id="addressfield3">
+           		    	<input type="text" placeholder="Pincode" class="input2" id="addressfield3">
             	   </div>
             	</div>
 				<br>
@@ -2425,9 +2434,9 @@ function check()
 {
   var str = document.getElementById("result_tot").innerText;
   var str_tot = str.slice(17);
-   if(Number(str_tot)<1000)
+   if(Number(str_tot)<300)
    {
-   document.getElementById("alert").innerHTML = "<b>You can place orders, only if the total amount is greater than 1000</b>";
+   document.getElementById("alert").innerHTML = "<b>You can place orders, only if the total amount is greater than 300</b>";
    }
    else
    {
@@ -2602,6 +2611,12 @@ location.href = "#milk";
 }
 function cart()
   {
+        document.getElementById("a1").style = "display: block;"
+        document.getElementById("a2").style = "display: none;"
+
+        document.getElementById("output").style = "display: block;"
+        document.getElementById("thala").style = "display: none;"
+
         document.getElementById("top").style = "display: none;"
         document.getElementById("cart").style = "display: block;"
         document.getElementById("user").style = "display: none;"
@@ -3243,7 +3258,7 @@ table += "<tr><td>" + (++n) + "</td><td>" + "Hawmor - Chocolate" + "</td><td>" +
 table += "<tr><td>" + (++n) + "</td><td>" + "Hawmor - Chocolate 4 ltr" + "</td><td>" + i1cho5field + " L " + "</td><td>" + "Rs.700" + "</td><td>" + "Rs."+ cost + "</td></tr>";
        }
 
-       
+
 
        if (i1pis6field > 0)
        {
@@ -3661,7 +3676,7 @@ table += "<tr><td>" + (++n) + "</td><td>" + "Dairy Day - Chocolate Rs.10" + "</t
 table += "<tr><td>" + (++n) + "</td><td>" + "Dairy Day - Chocolate 4 ltr" + "</td><td>" +  i3cho5field + " L " + "</td><td>" + "Rs.700" + "</td><td>" + "Rs."+ cost + "</td></tr>";
        }
 
-       
+
 
        if (i3pis6field > 0)
        {
@@ -3873,7 +3888,7 @@ table += "<tr><td>" + (++n) + "</td><td>" + "Uncle John - Chocolate Rs.10" + "</
 table += "<tr><td>" + (++n) + "</td><td>" + "Uncle John - Chocolate 4 ltr" + "</td><td>" + i4cho5field + " L " + "</td><td>" + "Rs.700" + "</td><td>" + "Rs."+ cost + "</td></tr>";
        }
 
-       
+
 
        if (i4pis6field > 0)
        {
@@ -4163,19 +4178,14 @@ table += "<tr><td>" + (++n) + "</td><td>" + "Cavin's Milkshake - Butterscotch" +
 table += "<tr><td>" + (++n) + "</td><td>" + "Cavin's Milkshake - Chocolate" + "</td><td>" + c3chocom4field + " L " + "</td><td>" + "Rs.750" + "</td><td>" + "Rs."+ cost + "</td></tr>";
        }
 
-    //date
-var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth()+1; //As January is 0.
-var yyyy = today.getFullYear();
-
     //total
     document.getElementById("result").innerHTML = res;
     if(tot==0)
    { table += "<tr><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>";
    table += "<tr><td></td><td></td><td></td><td></td><td>" + "Rs."+ tot + "</td></tr>"; }
     if(tot>0)
-   { table += "<tr><td></td><td></td><td></td><td></td><td>" + "Rs."+ tot + " ("+ dd + "." + mm + "." + yyyy + ") </td></tr>"; }
+   { table += "<tr><td></td><td></td><td></td><td></td><td>" + "Rs."+ tot + "</td></tr>"; }
+    sessionStorage.setItem("itms", table);
     table += "</tbody></table>";
     output.innerHTML = table;
     document.getElementById("result_tot").innerHTML = "Total Amount: Rs." + tot;
@@ -4197,13 +4207,69 @@ var yyyy = today.getFullYear();
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 
-  function writeData()
+   function writeData()
+{
+    var name = document.getElementById("namefield").value;
+    var phn = document.getElementById("phonefield").value;
+    var mail = document.getElementById("mailfield").value;
+    var adr1 = document.getElementById("addressfield1").value;
+    var adr2 = document.getElementById("addressfield2").value;
+    var adr3 = document.getElementById("addressfield3").value;
+    if(name.localeCompare("")==0 || phn.localeCompare("")==0 || mail.localeCompare("")==0 || adr1.localeCompare("")==0 || adr2.localeCompare("")==0 || adr3.localeCompare("")==0)
+    {
+    alert("You have missed to fill some data!!");
+    }
+    else
+    {
+    writeData2();
+    }
+}
+
+function writeData2()
+{
+var str = document.getElementById("result_tot").innerText;
+var str_tot = str.slice(17);
+var delivery = 500;
+var sum_amt = Number(str_tot) + Number(delivery);
+var final_amt = parseFloat(sum_amt) * 1.02 ;
+sessionStorage.setItem("str_fin", final_amt);
+var cartdata = sessionStorage.getItem("itms");
+
+cartdata += "<tr><td style='border: 0px; padding: 2px;'> </td> <td style='border: 0px solid #ddd; padding: 2px;'> </td></td> <td style='border: 0px solid #ddd; padding: 2px;'> </td> <td style='border: 0px solid #ddd;  text-align: right; padding: 2px;'> Delivery Charges: </td> <td style='border: 0px solid #ddd; text-align: left; padding: 2px; padding-left: 8px;'> Rs."+ delivery +" </td></tr>";
+cartdata += "<tr><td style='border: 0px; padding: 2px;'> </td> <td style='border: 0px solid #ddd; padding: 2px;'> </td></td> <td style='border: 0px solid #ddd; padding: 2px;'> </td> <td style='border: 0px solid #ddd;  text-align: right; padding: 2px;'> Tax: </td> <td style='border: 0px solid #ddd; text-align: left; padding: 2px; padding-left: 8px;'> 2% </td></tr>";
+cartdata += "<tr><td style='border: 0px; padding: 2px;'> </td> <td style='border: 0px solid #ddd; padding: 2px;'> </td></td> <td style='border: 0px solid #ddd; padding: 2px;'> </td> <td style='border: 0px solid #ddd;  text-align: right; padding: 2px;'> <b> Total: </b> </td> <td style='border: 0px solid #ddd; text-align: left; padding: 2px; padding-left: 8px;'> Rs." + final_amt + "</td></tr></table>";
+cartdata += "</tbody></table>"
+
+
+var res = document.getElementById("result").innerHTML;
+var res = res.concat("SubTotal: "+ str_tot +", ");
+var res = res.concat("Delivery Charges: "+ delivery +", ");
+var res = res.concat("Tax: 2% , ");
+
+document.getElementById("cart_items").innerHTML = "ITEMS ORDERED";
+document.getElementById("result").innerHTML = res;
+document.getElementById("thala").innerHTML = cartdata;
+
+document.getElementById("a1").style = "display: none;"
+document.getElementById("a2").style = "display: block;"
+
+document.getElementById("output").style = "display: none;"
+document.getElementById("thala").style = "display: block;"
+
+document.getElementById("top").style = "display: none;"
+document.getElementById("cart").style = "display: block;"
+document.getElementById("user").style = "display: none;"
+document.getElementById("success").style = "display: none;"
+
+}
+
+  function writeData1()
   {
-  var str = document.getElementById("result_tot").innerText;
-  var str_tot = str.slice(17);
+  str_tot1 = sessionStorage.getItem("str_fin");
+  var amount1 = Number(str_tot1)*100;
   var options = {
         "key": "rzp_test_zRJloAKnUn7v64", // Enter the Key ID generated from the Dashboard
-        "amount": Number(str_tot)*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 means 50000 paise or ₹500.
+        "amount": parseInt(amount1), // Amount is in currency subunits. Default currency is INR. Hence, 50000 means 50000 paise or ₹500.
         "currency": "INR",
         "name": "GSP Thangam Agencies",
         "description": "Online Payment",
@@ -4236,6 +4302,7 @@ var yyyy = today.getFullYear();
     var adr3 = document.getElementById("addressfield3").value;
     var item = document.getElementById("result").innerHTML;
     var item2 = item.replace(/,/g, "<br>");
+    str_tot1 = sessionStorage.getItem("str_fin");
 
 
   firebase.database().ref('/User'+ '-' + name + '-' + phn).set({
@@ -4243,7 +4310,7 @@ var yyyy = today.getFullYear();
                 Line_2 : adr2,
                 Line_3 : adr3  } ,
     Items: document.getElementById("result").innerText,
-    Total: document.getElementById("result_tot").innerText.slice(14)
+    Total: str_tot1
   })
 
     Email.send({
@@ -4253,7 +4320,7 @@ var yyyy = today.getFullYear();
     To : "ashwathpalaniappan25@gmail.com",
     From : "thangamagenciesgsp@gmail.com",
     Subject : "New Order!! From " + name + " !!",
-    Body : "Name:<br>" + name + "<br><br>Phone:<br>" + phn + "<br><br>Address:<br>" + adr1 + ",<br>" + adr2 + ",<br>" + adr3 + ".<br><br>Items:<br>" + item2 + "<br>Total Amount: " + document.getElementById("result_tot").innerText.slice(14) + ""
+    Body : "Name:<br>" + name + "<br><br>Phone:<br>" + phn + "<br><br>Address:<br>" + adr1 + ",<br>" + adr2 + ",<br>" + adr3 + ".<br><br>Items:<br>" + item2 + "<br>Total Amount: " + str_tot1 + ""
     });
 
     Email.send({
@@ -4263,18 +4330,14 @@ var yyyy = today.getFullYear();
     To : document.getElementById("mailfield").value,
     From : "thangamagenciesgsp@gmail.com",
     Subject : "GSP - Order Details",
-    Body : "<h3>Hi " + name +", Your order has been placed successfully!! </h3><b>Order Details:</b><br>" + item2 + "<br><b>Total Amount: " + document.getElementById("result_tot").innerText.slice(14) + "</b>"
+    Body : "<h3>Hi " + name +", Your order has been placed successfully!! </h3><b>Order Details:</b><br>" + item2 + "<br><b>Total Amount: " + str_tot1 + "</b>"
     });
 
 document.getElementById("result1").innerHTML = "<b>Order Placed!!!</b><br>Check your mail for Invoice<br><br>";
-document.getElementById("cart_items").innerHTML = "ITEMS ORDERED";
-document.getElementById("b1").style = "display: none;"
-document.getElementById("b2").style = "display: none;"
-document.getElementById("b3").style = "display: none;"
 document.getElementById("disp").src = "img/bg.png";
 document.getElementById("n_number").innerHTML = "<b>0</b>";
 document.getElementById("top").style = "display: none;"
-document.getElementById("cart").style = "display: block;"
+document.getElementById("cart").style = "display: none;"
 document.getElementById("user").style = "display: none;"
 document.getElementById("success").style = "display: block;"
   window.scrollTo(0, document.getElementById('success').offsetTop);
