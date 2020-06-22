@@ -2153,7 +2153,7 @@
 </center>
 </section>
 
-<section id="success" class="spacing4" style="display: none;"><br>
+<section id="success" style="display: none;"><br>
         <center>
         <img src="img/dummy.png" id="disp" class="fin_img">
         <p id="result1" style="color:#20A072;font-size:20px;"></p>
@@ -2226,12 +2226,12 @@
            		</div>
            		<div class="input-div pass">
            		   <div class="div">
-                    <input type="text" placeholder="Phone Number" class="input2" id="phonefield">
+                    <input type="number" placeholder="Phone Number" class="input2" id="phonefield">
             	   </div>
             	</div>
                 <div class="input-div pass">
            		   <div class="div">
-                    <input type="text" placeholder="E-mail" class="input2" id="mailfield">
+                    <input type="email" placeholder="E-mail" class="input2" id="mailfield">
             	   </div>
             	</div>
 				<div class="input-div pass">
@@ -2249,7 +2249,7 @@
 				<div class="input-div pass">
            		   <div class="div">
 
-           		    	<input type="text" placeholder="Pincode" class="input2" id="addressfield3">
+           		    	<input type="number" placeholder="Pincode - 625xxx" class="input2" id="addressfield3">
             	   </div>
             	</div>
 				<br>
@@ -2433,20 +2433,12 @@ cart_number+=    Number( document.getElementById("i4kul5field").value);
 
 function check()
 {
-  var str = document.getElementById("result_tot").innerText;
-  var str_tot = str.slice(17);
-   if(Number(str_tot)<300)
-   {
-   document.getElementById("alert").innerHTML = "<b>You can place orders, only if the total amount is greater than 300</b>";
-   }
-   else
-   {
    document.getElementById("user").style = "display: block;"
    document.getElementById("top").style = "display: none;"
     document.getElementById("cart").style = "display: none;"
     document.getElementById("success").style = "display: none;"
    location.href = "#user";
-   }
+
 }
 function backcart()
 {
@@ -2454,6 +2446,7 @@ document.getElementById("user").style = "display: none;"
 document.getElementById("top").style = "display: none;"
 document.getElementById("cart").style = "display: block;"
 document.getElementById("success").style = "display: none;"
+location.href = "#milk";
 }
 function clear2()
 {
@@ -4185,8 +4178,14 @@ table += "<tr><td>" + (++n) + "</td><td>" + "Cavin's Milkshake - Chocolate" + "<
    { table += "<tr><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>";
    table += "<tr><td></td><td></td><td></td><td></td><td>" + "Rs."+ tot + "</td></tr>"; }
     if(tot>0)
-   { table += "<tr><td></td><td></td><td></td><td></td><td>" + "Rs."+ tot + "</td></tr>"; }
+   { table += "<tr><td></td><td></td><td></td><td></td><td>" + "Rs."+ tot + "</td></tr>";
     sessionStorage.setItem("itms", table);
+    var final_amt1 = parseFloat(tot) * 1.02 ;
+    final_amt = parseFloat(final_amt1).toFixed(2);
+table+= "<tr><td style='border: 0px; padding: 2px;'> </td> <td style='border: 0px solid #ddd; padding: 2px;'> </td></td> <td style='border: 0px solid #ddd; padding: 2px;'> </td> <td style='border: 0px solid #ddd;  text-align: right; padding: 2px;'> Tax: </td> <td style='border: 0px solid #ddd; text-align: left; padding: 2px; padding-left: 8px;'> 2% </td></tr>";
+table+= "<tr><td style='border: 0px; padding: 2px;'> </td> <td style='border: 0px solid #ddd; padding: 2px;'> </td></td> <td style='border: 0px solid #ddd; padding: 2px;'> </td> <td style='border: 0px solid #ddd;  text-align: right; padding: 2px;'> <b> Total: </b> </td> <td style='border: 0px solid #ddd; text-align: left; padding: 2px; padding-left: 8px;'> Rs." + final_amt + "</td></tr></table>";
+    }
+
     table += "</tbody></table>";
     output.innerHTML = table;
     document.getElementById("result_tot").innerHTML = "Total Amount: Rs." + tot;
@@ -4216,9 +4215,18 @@ table += "<tr><td>" + (++n) + "</td><td>" + "Cavin's Milkshake - Chocolate" + "<
     var adr1 = document.getElementById("addressfield1").value;
     var adr2 = document.getElementById("addressfield2").value;
     var adr3 = document.getElementById("addressfield3").value;
+    var pin_init = adr3.substring(0, 3);
     if(name.localeCompare("")==0 || phn.localeCompare("")==0 || mail.localeCompare("")==0 || adr1.localeCompare("")==0 || adr2.localeCompare("")==0 || adr3.localeCompare("")==0)
     {
     alert("You have missed to fill some data!!");
+    }
+    else if(adr3.length != 6)
+    {
+    alert("Enter the pincode properly");
+    }
+    else if(pin_init.localeCompare("625")!=0)
+    {
+    alert("Orders are placed only within Madurai!!");
     }
     else
     {
@@ -4230,9 +4238,10 @@ function writeData2()
 {
 var str = document.getElementById("result_tot").innerText;
 var str_tot = str.slice(17);
-var delivery = 500;
+var delivery = 0;
 var sum_amt = Number(str_tot) + Number(delivery);
-var final_amt = parseFloat(sum_amt) * 1.02 ;
+var final_amt1 = parseFloat(sum_amt) * 1.02 ;
+final_amt = parseFloat(final_amt1).toFixed(2);
 sessionStorage.setItem("str_fin", final_amt);
 var cartdata = sessionStorage.getItem("itms");
 
@@ -4247,26 +4256,46 @@ var res = res.concat("SubTotal: "+ str_tot +", ");
 var res = res.concat("Delivery Charges: "+ delivery +", ");
 var res = res.concat("Tax: 2% , ");
 
-document.getElementById("cart_items").innerHTML = "ITEMS ORDERED";
 document.getElementById("result").innerHTML = res;
 document.getElementById("thala").innerHTML = cartdata;
 
-document.getElementById("a1").style = "display: none;"
-document.getElementById("a2").style = "display: block;"
+var bool_amt = pincode();
 
-document.getElementById("output").style = "display: none;"
-document.getElementById("thala").style = "display: block;"
+if(Number(bool_amt)==0)
+{
+alert("Sorry for the inconvinience! We cannot deliver to your location!");
+}
 
+else if(Number(final_amt) < Number(bool_amt) )
+{
 document.getElementById("top").style = "display: none;"
 document.getElementById("cart").style = "display: block;"
 document.getElementById("user").style = "display: none;"
 document.getElementById("success").style = "display: none;"
+alert("You can place orders only above "+ bool_amt +" with respect to your location");
+}
+else
+{writeData1();}
+}
 
+function pincode()
+{
+var pin = document.getElementById("addressfield3").value;
+if(pin.localeCompare("625001")==0 || pin.localeCompare("625002")==0 || pin.localeCompare("625003")==0)
+{ return 1000; }
+else if(pin.localeCompare("625004")==0 || pin.localeCompare("625007")==0 || pin.localeCompare("625009")==0 || pin.localeCompare("625010")==0 || pin.localeCompare("625011")==0 || pin.localeCompare("625012")==0 || pin.localeCompare("625013")==0 || pin.localeCompare("625014")==0 || pin.localeCompare("625015")==0 || pin.localeCompare("625017")==0 || pin.localeCompare("625018")==0 || pin.localeCompare("625020")==0 )
+{ return 2000; }
+else if(pin.localeCompare("625062")==0)
+{ return 500; }
+else if(pin.localeCompare("625016")==0)
+{ return 300; }
+else
+{ return 0; }
 }
 
   function writeData1()
   {
-  str_tot1 = sessionStorage.getItem("str_fin");
+  var str_tot1 = sessionStorage.getItem("str_fin");
   var amount1 = Number(str_tot1)*100;
   var options = {
         "key": "rzp_test_zRJloAKnUn7v64", // Enter the Key ID generated from the Dashboard
